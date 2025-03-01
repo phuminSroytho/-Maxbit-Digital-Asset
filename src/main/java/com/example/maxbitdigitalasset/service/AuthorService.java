@@ -29,7 +29,7 @@ public class AuthorService {
         for (AuthorEntity author : authors) {
             response.add(new V1GetAuthorResponse(String.valueOf(author.getId()), author.getName()));
         }
-        log.debug("response = : {}", objectToJson(response));
+        log.info("response = : {}", objectToJson(response));
 
         return response;
     }
@@ -40,7 +40,7 @@ public class AuthorService {
                         .setId(String.valueOf(authorEntity.getId()))
                         .setName(authorEntity.getName()))
                 .orElse(new V1GetAuthorResponse());
-        log.debug("response = : {}", objectToJson(response));
+        log.info("response = : {}", objectToJson(response));
 
         return response;
     }

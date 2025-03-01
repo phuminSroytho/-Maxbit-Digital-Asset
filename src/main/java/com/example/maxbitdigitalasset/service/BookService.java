@@ -32,7 +32,7 @@ public class BookService {
                     .setTitle(book.getTitle())
                     .setAuthor(book.getAuthor()));
         }
-        log.debug("response = :{}", objectToJson(response));
+        log.info("response = :{}", objectToJson(response));
 
         return response;
     }
@@ -46,7 +46,7 @@ public class BookService {
                         .setAuthor(bookEntity.getAuthor())
                         .setTitle(bookEntity.getTitle()))
                 .orElse(new V1GetBookResponse());
-        log.debug("response = :{}", objectToJson(response));
+        log.info("response = :{}", objectToJson(response));
 
         return response;
     }

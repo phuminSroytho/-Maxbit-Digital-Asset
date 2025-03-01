@@ -30,9 +30,10 @@ public class MemberService {
         for (MemberEntity member : members) {
             V1GetMemberResponse tempResponse = new V1GetMemberResponse();
             BeanUtils.copyProperties(member, tempResponse);
+            tempResponse.setId(String.valueOf(member.getId()));
             response.add(tempResponse);
         }
-        log.debug("response = :{}", objectToJson(response));
+        log.info("response = :{}", objectToJson(response));
 
         return response;
     }
@@ -46,7 +47,7 @@ public class MemberService {
                         .setEmail(memberEntity.getEmail())
                         .setName(memberEntity.getName()))
                 .orElse(new V1GetMemberResponse());
-        log.debug("response = :{}", objectToJson(response));
+        log.info("response = :{}", objectToJson(response));
 
         return response;
     }
