@@ -1,17 +1,22 @@
 package com.example.maxbitdigitalasset.controller.template;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 public interface CrudController<GetResponse, PostRequest, PatchRequest> {
     ResponseEntity<List<GetResponse>> getAllUser();
 
-    ResponseEntity<GetResponse> getUserById(String id);
+    ResponseEntity<GetResponse> getUserById(@RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id);
 
-    ResponseEntity<Void> postUser(PostRequest request);
+    ResponseEntity<Void> postUser(@RequestBody @Valid PostRequest request);
 
-    ResponseEntity<Void> patchUserById(String id, PatchRequest request);
+    ResponseEntity<Void> patchUserById(@RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id, @RequestBody @Valid PatchRequest request);
 
-    ResponseEntity<Void> deleteUserById(String id);
+    ResponseEntity<Void> deleteUserById(@RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id);
 }
