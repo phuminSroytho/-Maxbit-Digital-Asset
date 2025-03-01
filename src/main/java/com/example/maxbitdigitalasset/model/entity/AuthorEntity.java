@@ -9,12 +9,13 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @Entity
+@Table(name = "author_entity")
 public class AuthorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "author_id")
-    private String id;
+    private int id;
 
     @Column(name = "author_name")
     private String name;

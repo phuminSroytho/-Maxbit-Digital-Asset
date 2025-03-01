@@ -28,7 +28,7 @@ public class BookService {
 
         for (BookEntity book : books) {
             response.add(new V1GetBookResponse()
-                    .setId(book.getId())
+                    .setId(String.valueOf(book.getId()))
                     .setTitle(book.getTitle())
                     .setAuthor(book.getAuthor()));
         }
@@ -42,7 +42,7 @@ public class BookService {
         Optional<BookEntity> book = bookRepository.findById(id);
 
         response = book.map(bookEntity -> new V1GetBookResponse()
-                        .setId(bookEntity.getId())
+                        .setId(String.valueOf(bookEntity.getId()))
                         .setAuthor(bookEntity.getAuthor())
                         .setTitle(bookEntity.getTitle()))
                 .orElse(new V1GetBookResponse());
@@ -52,7 +52,7 @@ public class BookService {
     }
 
     public void insertBook(V1PostBookRequest request) {
-        bookRepository.save(new BookEntity(request.getId(), request.getTitle(), request.getAuthor(), new HashSet<>()));
+        bookRepository.save(new BookEntity(Integer.parseInt(request.getId()), request.getTitle(), request.getAuthor(), new HashSet<>()));
     }
 
     public void updateBook(String id, V1PatchBookRequest request) {

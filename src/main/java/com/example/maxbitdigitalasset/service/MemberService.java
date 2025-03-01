@@ -42,7 +42,7 @@ public class MemberService {
         Optional<MemberEntity> member = memberRepository.findById(id);
 
         response = member.map(memberEntity -> new V1GetMemberResponse()
-                        .setId(memberEntity.getId())
+                        .setId(String.valueOf(memberEntity.getId()))
                         .setEmail(memberEntity.getEmail())
                         .setName(memberEntity.getName()))
                 .orElse(new V1GetMemberResponse());
@@ -52,7 +52,7 @@ public class MemberService {
     }
 
     public void insertMember(V1PostMemberRequest request) {
-        memberRepository.save(new MemberEntity(request.getId(), request.getName(), request.getEmail(), new HashSet<>()));
+        memberRepository.save(new MemberEntity(Integer.parseInt(request.getId()), request.getName(), request.getEmail(), new HashSet<>()));
     }
 
     public void updateMember(String id, V1PatchMemberRequest request) {

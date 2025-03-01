@@ -27,7 +27,7 @@ public class AuthorService {
         List<AuthorEntity> authors = authorRepository.findAll();
 
         for (AuthorEntity author : authors) {
-            response.add(new V1GetAuthorResponse(author.getId(), author.getName()));
+            response.add(new V1GetAuthorResponse(String.valueOf(author.getId()), author.getName()));
         }
         log.debug("response = : {}", objectToJson(response));
 
@@ -37,7 +37,7 @@ public class AuthorService {
     public V1GetAuthorResponse getAuthorById(String id) {
         Optional<AuthorEntity> author = authorRepository.findById(id);
         V1GetAuthorResponse response = author.map(authorEntity -> new V1GetAuthorResponse()
-                        .setId(authorEntity.getId())
+                        .setId(String.valueOf(authorEntity.getId()))
                         .setName(authorEntity.getName()))
                 .orElse(new V1GetAuthorResponse());
         log.debug("response = : {}", objectToJson(response));
@@ -46,7 +46,7 @@ public class AuthorService {
     }
 
     public void insertAuthor(V1PostAuthorRequest request) {
-        authorRepository.save(new AuthorEntity(request.getId(), request.getName(), new ArrayList<>()));
+        authorRepository.save(new AuthorEntity(Integer.parseInt(request.getId()), request.getName(), new ArrayList<>()));
     }
 
     public void updateAuthor(String id, V1PatchAuthorRequest request) {

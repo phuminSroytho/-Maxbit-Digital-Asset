@@ -12,11 +12,12 @@ import java.util.Set;
 @AllArgsConstructor
 @Accessors(chain = true)
 @Entity
+@Table(name = "book_entity")
 public class BookEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
-    private String id;
+    private int id;
 
     @Column(name = "book_title")
     private String title;
