@@ -29,7 +29,7 @@ public class AuthorController implements CrudController<V1GetAuthorResponse, V1P
 
     @Override
     @GetMapping("/all")
-    public ResponseEntity<List<V1GetAuthorResponse>> getAllUser() {
+    public ResponseEntity<List<V1GetAuthorResponse>> getAll() {
         HttpHeaders newHttpHerder = new HttpHeaders();
         newHttpHerder.addAll(httpHeaders);
 
@@ -42,7 +42,7 @@ public class AuthorController implements CrudController<V1GetAuthorResponse, V1P
 
     @Override
     @GetMapping
-    public ResponseEntity<V1GetAuthorResponse> getUserById(
+    public ResponseEntity<V1GetAuthorResponse> getById(
             @RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id
     ) {
         HttpHeaders newHttpHerder = new HttpHeaders();
@@ -57,7 +57,7 @@ public class AuthorController implements CrudController<V1GetAuthorResponse, V1P
 
     @Override
     @PostMapping
-    public ResponseEntity<Void> postUser(
+    public ResponseEntity<Void> post(
             @RequestBody @Valid V1PostAuthorRequest request
     ) {
         HttpHeaders newHttpHerder = new HttpHeaders();
@@ -73,7 +73,7 @@ public class AuthorController implements CrudController<V1GetAuthorResponse, V1P
 
     @Override
     @PatchMapping
-    public ResponseEntity<Void> patchUserById(
+    public ResponseEntity<Void> patchById(
             @RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id,
             @RequestBody @Valid V1PatchAuthorRequest request
     ) {
@@ -89,7 +89,7 @@ public class AuthorController implements CrudController<V1GetAuthorResponse, V1P
     }
 
     @Override
-    public ResponseEntity<Void> deleteUserById(
+    public ResponseEntity<Void> deleteById(
             @RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id
     ) {
         HttpHeaders newHttpHerder = new HttpHeaders();

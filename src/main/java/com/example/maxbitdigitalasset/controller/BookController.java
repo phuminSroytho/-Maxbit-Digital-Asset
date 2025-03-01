@@ -29,7 +29,7 @@ public class BookController implements CrudController<V1GetBookResponse, V1PostB
 
     @Override
     @GetMapping("/all")
-    public ResponseEntity<List<V1GetBookResponse>> getAllUser() {
+    public ResponseEntity<List<V1GetBookResponse>> getAll() {
         HttpHeaders newHttpHerder = new HttpHeaders();
         newHttpHerder.addAll(httpHeaders);
 
@@ -42,7 +42,7 @@ public class BookController implements CrudController<V1GetBookResponse, V1PostB
 
     @Override
     @GetMapping
-    public ResponseEntity<V1GetBookResponse> getUserById(
+    public ResponseEntity<V1GetBookResponse> getById(
             @RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id
     ) {
         HttpHeaders newHttpHerder = new HttpHeaders();
@@ -57,7 +57,7 @@ public class BookController implements CrudController<V1GetBookResponse, V1PostB
 
     @Override
     @PostMapping
-    public ResponseEntity<Void> postUser(
+    public ResponseEntity<Void> post(
             @RequestBody @Valid V1PostBookRequest request
     ) {
         HttpHeaders newHttpHerder = new HttpHeaders();
@@ -73,7 +73,7 @@ public class BookController implements CrudController<V1GetBookResponse, V1PostB
 
     @Override
     @PatchMapping
-    public ResponseEntity<Void> patchUserById(
+    public ResponseEntity<Void> patchById(
             @RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id,
             @RequestBody @Valid V1PatchBookRequest request
     ) {
@@ -89,7 +89,7 @@ public class BookController implements CrudController<V1GetBookResponse, V1PostB
     }
 
     @Override
-    public ResponseEntity<Void> deleteUserById(
+    public ResponseEntity<Void> deleteById(
             @RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id
     ) {
         HttpHeaders newHttpHerder = new HttpHeaders();

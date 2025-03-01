@@ -29,7 +29,7 @@ public class MemberController implements CrudController<V1GetMemberResponse, V1P
 
     @Override
     @GetMapping("/all")
-    public ResponseEntity<List<V1GetMemberResponse>> getAllUser() {
+    public ResponseEntity<List<V1GetMemberResponse>> getAll() {
         HttpHeaders newHttpHerder = new HttpHeaders();
         newHttpHerder.addAll(httpHeaders);
 
@@ -42,7 +42,7 @@ public class MemberController implements CrudController<V1GetMemberResponse, V1P
 
     @Override
     @GetMapping
-    public ResponseEntity<V1GetMemberResponse> getUserById(
+    public ResponseEntity<V1GetMemberResponse> getById(
             @RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id
     ) {
         HttpHeaders newHttpHerder = new HttpHeaders();
@@ -57,7 +57,7 @@ public class MemberController implements CrudController<V1GetMemberResponse, V1P
 
     @Override
     @PostMapping
-    public ResponseEntity<Void> postUser(
+    public ResponseEntity<Void> post(
             @RequestBody @Valid V1PostMemberRequest request
     ) {
         HttpHeaders newHttpHerder = new HttpHeaders();
@@ -73,7 +73,7 @@ public class MemberController implements CrudController<V1GetMemberResponse, V1P
 
     @Override
     @PatchMapping
-    public ResponseEntity<Void> patchUserById(
+    public ResponseEntity<Void> patchById(
             @RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id,
             @RequestBody @Valid V1PatchMemberRequest request
     ) {
@@ -90,7 +90,7 @@ public class MemberController implements CrudController<V1GetMemberResponse, V1P
 
     @Override
     @DeleteMapping
-    public ResponseEntity<Void> deleteUserById(
+    public ResponseEntity<Void> deleteById(
             @RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id
     ) {
         HttpHeaders newHttpHerder = new HttpHeaders();

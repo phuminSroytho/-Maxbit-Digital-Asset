@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 public interface CrudController<GetResponse, PostRequest, PatchRequest> {
-    ResponseEntity<List<GetResponse>> getAllUser();
+    ResponseEntity<List<GetResponse>> getAll();
 
-    ResponseEntity<GetResponse> getUserById(@RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id);
+    ResponseEntity<GetResponse> getById(@RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id);
 
-    ResponseEntity<Void> postUser(@RequestBody @Valid PostRequest request);
+    ResponseEntity<Void> post(@RequestBody @Valid PostRequest request);
 
-    ResponseEntity<Void> patchUserById(@RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id, @RequestBody @Valid PatchRequest request);
+    ResponseEntity<Void> patchById(@RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id, @RequestBody @Valid PatchRequest request);
 
-    ResponseEntity<Void> deleteUserById(@RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id);
+    ResponseEntity<Void> deleteById(@RequestParam @NotNull @Pattern(regexp = "^\\d*$", message = "Invalid id format") String id);
 }
